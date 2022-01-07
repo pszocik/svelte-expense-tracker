@@ -5,18 +5,23 @@
   import type { Expense } from '../Types'
   import { categories, items } from '../stores.ts'
   import { getCurrentDate } from '../helpers'
+  import BindableInput from './core/BindableInput.svelte'
 
-  let formEl: HTMLFormElement
   const handleSubmit = (e: CustomEvent<{ data: Expense }>) => {
     const item = e?.detail?.data
     $items = [...($items as Expense[]), item]
-    formEl.reset()
+    expense = ''
   }
+  const handleReset = () => {
+    expense = ''
+  }
+
+  let expense = ''
   const today = getCurrentDate()
 </script>
 
-<Form on:submit={handleSubmit} bind:this={formEl}>
-  <Input label="Expense:" name="expense" />
+<Form on:submit={handleSubmit} on:reset={handleReset}>
+  <BindableInput label="Expense:" name="expense" bind:value={expense} />
   <Input label="Date:" name="date" type="date" value={today} />
   <Select label="Category" name="category">
     {#each $categories as category}

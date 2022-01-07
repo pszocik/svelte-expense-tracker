@@ -3,7 +3,6 @@
 
   const dispatch = createEventDispatcher()
 
-  let formEl: HTMLFormElement
   const onSubmit = (e: SubmitEvent): void => {
     const formData = new FormData(<HTMLFormElement>e.target)
     const data: { [inputName: string]: string } = {}
@@ -18,12 +17,12 @@
     })
   }
 
-  export const reset = (): void => {
-    formEl.reset()
+  const onReset = () => {
+    dispatch('reset')
   }
 </script>
 
-<form on:submit|preventDefault={onSubmit} bind:this={formEl}>
+<form on:submit|preventDefault={onSubmit} on:reset|preventDefault={onReset}>
   <slot />
 </form>
 
