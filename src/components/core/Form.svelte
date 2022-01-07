@@ -6,8 +6,8 @@
   let formEl: HTMLFormElement
   const onSubmit = (e: SubmitEvent): void => {
     const formData = new FormData(<HTMLFormElement>e.target)
-
     const data: { [inputName: string]: string } = {}
+
     for (let field of formData) {
       const [key, value] = field
       data[key] = <string>value
