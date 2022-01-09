@@ -4,7 +4,15 @@
   export let value = undefined
 </script>
 
-<label for={name}>{label}</label>
-<select id={name} {name} bind:value>
-  <slot />
-</select>
+<section>
+  <label for={name}>{label}</label>
+  <select id={name} {name} bind:value>
+    <slot />
+  </select>
+</section>
+
+<style>
+  section {
+    margin: 10px;
+  }
+</style>

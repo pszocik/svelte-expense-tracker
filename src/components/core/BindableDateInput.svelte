@@ -4,5 +4,13 @@
   export let value = ''
 </script>
 
-<label for={name}>{label}</label>
-<input id={name} {name} type="date" bind:value />
+<section>
+  <label for={name}>{label}</label>
+  <input id={name} {name} type="date" bind:value />
+</section>
+
+<style>
+  section {
+    margin: 10px;
+  }
+</style>
