@@ -5,7 +5,7 @@
   import type { Expense } from '../Types'
   import { categories, items } from '../stores.ts'
   import { getCurrentDate } from '../helpers'
-  import BindableInput from './core/BindableInput.svelte'
+  import BindableInput from './core/BindableTextInput.svelte'
 
   const handleSubmit = (e: CustomEvent<{ data: Expense }>) => {
     const item = e?.detail?.data
