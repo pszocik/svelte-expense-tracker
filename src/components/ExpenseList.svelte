@@ -19,6 +19,7 @@
 </script>
 
 <section class="expense-list">
+  <h1>Filter</h1>
   <section class="filters">
     <Select
       class="category-filter"
@@ -35,19 +36,23 @@
     <BindableDateInput name="date-to" label="Date To" bind:value={dateTo} />
   </section>
   <h1>Items</h1>
+  {#each filteredList as item}
+    <ExpenseItem {item} />
+  {:else}
+    <p>No items.</p>
+  {/each}
 </section>
-{#each filteredList as item}
-  <ExpenseItem {item} />
-{/each}
 
 <style>
-  h1 {
+  h1,
+  p {
     text-align: center;
   }
   .expense-list {
     display: flex;
     flex-direction: column;
     width: 100%;
+    align-self: flex-start;
   }
 
   .filters {

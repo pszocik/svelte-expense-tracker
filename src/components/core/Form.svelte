@@ -31,5 +31,7 @@
     display: flex;
     flex-direction: column;
     width: 300px;
+    border: 1px solid black;
+    padding: 20px;
   }
 </style>
