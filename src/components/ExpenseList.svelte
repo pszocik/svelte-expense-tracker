@@ -27,12 +27,7 @@
 <section class="expense-list">
   <h1>Filter</h1>
   <section class="filters">
-    <Select
-      class="category-filter"
-      label="Category Filter"
-      name="category-filter"
-      bind:value={categoryFilter}
-    >
+    <Select label="Category Filter" name="category-filter" bind:value={categoryFilter}>
       <option value="-">-</option>
       {#each $categories as category}
         <option value={category}>{category}</option>
@@ -45,8 +40,10 @@
   <h1>Items</h1>
   <section class="items">
     {#each filteredList as item}
-      <ExpenseItem {item} />
-      <Button on:click={() => deleteItem(item.expense)}>Delete</Button>
+      <section class="item">
+        <ExpenseItem {item} />
+        <Button on:click={() => deleteItem(item.expense)}>Delete</Button>
+      </section>
     {:else}
       <p>No items.</p>
     {/each}
@@ -73,8 +70,12 @@
   }
   .items {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .item {
+    display: flex;
+    flex-direction: row;
   }
 </style>

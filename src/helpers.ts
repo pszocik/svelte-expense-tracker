@@ -4,9 +4,7 @@ export const getCurrentDate = () => {
   const month = date.getMonth() + 1
   const year = date.getFullYear()
 
-  let dayStr: string, monthStr: string
-  if (month < 10) monthStr = '0' + month.toString()
-  if (day < 10) dayStr = '0' + day.toString()
-
-  return `${year}-${monthStr}-${dayStr}`
+  return `${year}-${month < 10 ? '0' + month.toString() : month}-${
+    day < 10 ? '0' + day.toString() : day
+  }`
 }
