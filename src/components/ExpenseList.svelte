@@ -19,6 +19,7 @@
   let dateTo: string
 
   const deleteItem = (itemExpense: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     $items = $items.filter(item => item.expense != itemExpense)
   }
 </script>
@@ -45,7 +46,7 @@
   <section class="items">
     {#each filteredList as item}
       <ExpenseItem {item} />
-      <Button on:click={() => deleteItem(item.expense)}>Delete</Button>
+      <Button on:click={() => deleteItem(item.expense)}>Delete</Button>}
     {:else}
       <p>No items.</p>
     {/each}
