@@ -46,7 +46,7 @@
   <section class="items">
     {#each filteredList as item}
       <ExpenseItem {item} />
-      <Button on:click={() => deleteItem(item.expense)}>Delete</Button>}
+      <Button on:click={() => deleteItem(item.expense)}>Delete</Button>
     {:else}
       <p>No items.</p>
     {/each}
