@@ -5,6 +5,7 @@
   import BindableDateInput from './core/BindableDateInput.svelte'
   import { filterItemsByCategory, filterItemsByDate } from '../filters'
   import ExpenseItem from './ExpenseItem.svelte'
+  import Button from './core/Button.svelte'
 
   let filteredList: Expense[]
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
@@ -16,6 +17,10 @@
   let categoryFilter = '-'
   let dateFrom: string
   let dateTo: string
+
+  const deleteItem = (itemExpense: string) => {
+    $items = $items.filter(item => item.expense != itemExpense)
+  }
 </script>
 
 <section class="expense-list">
@@ -35,12 +40,16 @@
     <BindableDateInput name="date-from" label="Date From" bind:value={dateFrom} />
     <BindableDateInput name="date-to" label="Date To" bind:value={dateTo} />
   </section>
+
   <h1>Items</h1>
-  {#each filteredList as item}
-    <ExpenseItem {item} />
-  {:else}
-    <p>No items.</p>
-  {/each}
+  <section class="items">
+    {#each filteredList as item}
+      <ExpenseItem {item} />
+      <Button on:click={() => deleteItem(item.expense)}>Delete</Button>
+    {:else}
+      <p>No items.</p>
+    {/each}
+  </section>
 </section>
 
 <style>
@@ -60,5 +69,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+  .items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 </style>
