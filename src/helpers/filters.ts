@@ -21,7 +21,7 @@ export const filterItemsByDate = (
 
 export const filterItemsByCategory = (
   item: Expense,
-  categoryFilter: string
+  categoryFilter: '-' | number
 ): boolean | Expense => {
   if (categoryFilter !== '-') return item.category === categoryFilter
   return item
