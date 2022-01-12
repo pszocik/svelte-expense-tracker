@@ -12,6 +12,9 @@ import json from '@rollup/plugin-json'
 
 const production = !process.env.ROLLUP_WATCH
 
+// Import vercel env variables https://github.com/vercel/vercel/discussions/7016#discussioncomment-1651744
+const { SVELTE_APP_SUPABASE_URL, SVELTE_APP_SUPABASE_ANON_KEY } = process.env
+
 function serve() {
   let server
 
@@ -48,7 +51,9 @@ export default {
       __api: JSON.stringify({
         env: {
           isProd: production,
-          ...config().parsed // attached the .env config
+          ...config().parsed, // attached the .env config for local dev
+          SVELTE_APP_SUPABASE_URL, // prod,
+          SVELTE_APP_SUPABASE_ANON_KEY // prod
         }
       }),
       delimiters: ['', '']
