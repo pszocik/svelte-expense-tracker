@@ -1,10 +1,9 @@
 import { Writable, writable } from 'svelte/store'
-import type { Expense } from './Types'
+import type { Category, Expense } from './types'
+
+type CategoriesWritable = Writable<Category[]>
 
 export const items: Writable<Expense[]> = writable(<Expense[]>[])
-export const categories: Writable<string[]> = writable(<string[]>[
-  'Household expenses',
-  'Fun',
-  'Food',
-  'Take-away'
-])
+export const categories: CategoriesWritable = writable(<Category[]>[])
+
+export const user: Writable<any> = writable(false)

@@ -1,4 +1,4 @@
-import type { Expense } from './Types'
+import type { Expense } from '../types'
 
 export const filterItemsByDate = (
   item: Expense,
