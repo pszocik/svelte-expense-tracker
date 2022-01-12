@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Expense } from '../Types'
+  import type { Expense } from '../types'
 
   export let item: Expense
 </script>

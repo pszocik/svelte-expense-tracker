@@ -1,9 +1,9 @@
 <script lang="ts">
   import { categories, items } from '../stores'
-  import { Expense } from '../Types.ts'
+  import { Expense } from '../types.ts'
   import Select from './core/Select.svelte'
   import BindableDateInput from './core/BindableDateInput.svelte'
-  import { filterItemsByCategory, filterItemsByDate } from '../filters'
+  import { filterItemsByCategory, filterItemsByDate } from '../helpers/filters'
   import ExpenseItem from './ExpenseItem.svelte'
   import Button from './core/Button.svelte'
 

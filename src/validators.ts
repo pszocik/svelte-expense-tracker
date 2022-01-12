@@ -1,4 +1,4 @@
-export const required = (value: string): boolean => {
+export function required(value: string): boolean {
   return value === '' || value == null
 }
 

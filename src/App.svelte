@@ -1,11 +1,28 @@
-<script lang="ts">
+<script>
   import ExpenseForm from './components/ExpenseForm.svelte'
   import ExpenseList from './components/ExpenseList.svelte'
+  import { user } from './stores'
+  import { getUser, signOut } from './supabaseServices'
+  import Login from './auth/Login.svelte'
+  import { supabase } from './supabaseClient'
+
+  $user = getUser()
+  // $user = true
+  supabase.auth.onAuthStateChange((event, session) => {
+    $user = session ? session.user : false
+  })
 </script>
 
+{#if $user}
+  <button on:click={signOut}>Sign out</button>
+{/if}
 <main class="container">
-  <ExpenseForm />
-  <ExpenseList />
+  {#if $user}
+    <ExpenseForm />
+    <ExpenseList />
+  {:else}
+    <Login />
+  {/if}
 </main>
 
 <style>
