@@ -1,7 +1,7 @@
 <script>
-  import { signIn } from '../supabaseServices'
-  import Form from '../components/core/Form.svelte'
-  import BindableTextInput from '../components/core/BindableTextInput.svelte'
+  import { signIn } from '../../supabaseServices'
+  import Form from '../core/Form.svelte'
+  import BindableTextInput from '../core/BindableTextInput.svelte'
 
   let signInPromise = Promise.resolve({})
   let email = ''

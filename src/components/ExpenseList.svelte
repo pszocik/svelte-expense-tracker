@@ -6,6 +6,7 @@
   import { filterItemsByCategory, filterItemsByDate } from '../helpers/filters'
   import ExpenseItem from './ExpenseItem.svelte'
   import Button from './core/Button.svelte'
+  import { deleteExpense } from '../supabaseServices'
 
   let filteredList: Expense[]
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
@@ -18,9 +19,9 @@
   let dateFrom: string
   let dateTo: string
 
-  const deleteItem = (itemExpense: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    $items = $items.filter(item => item.expense != itemExpense)
+  const deleteItem = async (itemId: string) => {
+    await deleteExpense(itemId)
+    $items = $items.filter(item => item.id != itemId)
   }
 </script>
 
@@ -30,7 +31,7 @@
     <Select label="Category Filter" name="category-filter" bind:value={categoryFilter}>
       <option value="-">-</option>
       {#each $categories as category}
-        <option value={category}>{category}</option>
+        <option value={category.id}>{category.name}</option>
       {/each}
     </Select>
     <BindableDateInput name="date-from" label="Date From" bind:value={dateFrom} />
@@ -42,7 +43,7 @@
     {#each filteredList as item}
       <section class="item">
         <ExpenseItem {item} />
-        <Button on:click={() => deleteItem(item.expense)}>Delete</Button>
+        <Button on:click={() => deleteItem(item.id)}>Delete</Button>
       </section>
     {:else}
       <p>No items.</p>

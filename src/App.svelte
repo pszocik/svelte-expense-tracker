@@ -3,8 +3,9 @@
   import ExpenseList from './components/ExpenseList.svelte'
   import { user } from './stores'
   import { getUser, signOut } from './supabaseServices'
-  import Login from './auth/Login.svelte'
+  import Login from './components/auth/Login.svelte'
   import { supabase } from './supabaseClient'
+  import AuthApp from './AuthApp.svelte'
 
   $user = getUser()
   // $user = true
@@ -18,8 +19,10 @@
 {/if}
 <main class="container">
   {#if $user}
-    <ExpenseForm />
-    <ExpenseList />
+    <AuthApp>
+      <ExpenseForm />
+      <ExpenseList />
+    </AuthApp>
   {:else}
     <Login />
   {/if}

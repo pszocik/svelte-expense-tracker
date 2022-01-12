@@ -1,5 +1,11 @@
 export interface Expense {
-  expense: string
+  id: string
+  name: string
   date: string
-  category: string
+  category: number
+}
+
+export interface Category {
+  id: number
+  name: string
 }
