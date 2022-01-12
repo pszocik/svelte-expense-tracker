@@ -6,7 +6,7 @@
   let signInPromise = Promise.resolve({})
   let email = ''
   const handleSignIn = () => {
-    signInPromise = signIn({ email })
+    signInPromise = signIn(email)
   }
 </script>
 
