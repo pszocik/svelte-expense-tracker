@@ -5,7 +5,7 @@
   import { getUser, signOut } from './supabaseServices'
   import Login from './components/auth/Login.svelte'
   import { supabase } from './supabaseClient'
-  import AuthApp from './AuthApp.svelte'
+  import AuthApp from './components/AuthApp.svelte'
 
   $user = getUser()
   // $user = true

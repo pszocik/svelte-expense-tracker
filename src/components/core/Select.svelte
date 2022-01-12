@@ -10,9 +10,3 @@
     <slot />
   </select>
 </section>
-
-<style>
-  section {
-    margin: 10px;
-  }
-</style>
