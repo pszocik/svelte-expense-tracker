@@ -21,8 +21,8 @@
 
   const deleteItem = async (itemId: string) => {
     try {
-      $items = $items.filter(item => item.id != itemId)
       await deleteExpense(itemId)
+      $items = $items.filter(item => item.id != itemId)
     } catch (error) {
       console.log(error)
     }

@@ -14,12 +14,10 @@
   })
 </script>
 
-{#if $user}
-  <button on:click={signOut}>Sign out</button>
-{/if}
 <main class="container">
   {#if $user}
     <AuthApp>
+      <button on:click={signOut}>Sign out</button>
       <ExpenseForm />
       <ExpenseList />
     </AuthApp>
@@ -31,7 +29,7 @@
 <style>
   .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
