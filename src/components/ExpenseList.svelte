@@ -20,8 +20,12 @@
   let dateTo: string
 
   const deleteItem = async (itemId: string) => {
-    await deleteExpense(itemId)
-    $items = $items.filter(item => item.id != itemId)
+    try {
+      $items = $items.filter(item => item.id != itemId)
+      await deleteExpense(itemId)
+    } catch (error) {
+      console.log(error)
+    }
   }
 </script>
 

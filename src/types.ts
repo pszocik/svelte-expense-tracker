@@ -3,6 +3,8 @@ export interface Expense {
   name: string
   date: string
   category: number
+  amount: number
+  user_id: number
 }
 
 export interface Category {

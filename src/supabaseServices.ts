@@ -18,7 +18,7 @@ export async function signOut() {
 export async function createExpense(expense: Expense, user) {
   const { data, error } = await supabase
     .from('expenses')
-    .insert([{ ...expense, user_id: user.id }])
+    .insert([{ ...expense, user_id: <number>user.id } as Expense])
   return { data, error }
 }
 

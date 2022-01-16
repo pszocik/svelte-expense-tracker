@@ -6,19 +6,22 @@
   import { categories, items, user } from '../stores.ts'
   import { getCurrentDate } from '../helpers/helpers'
   import BindableInput from './core/BindableTextInput.svelte'
-  import { createExpense, getExpenses } from '../supabaseServices.js'
+  import { createExpense } from '../supabaseServices.js'
 
   const handleSubmit = async (e: CustomEvent<{ data: Expense }>) => {
     const item = e?.detail?.data
     const newItem = await createExpense(item, $user)
     $items = [...($items as Expense[]), newItem.data[0]]
     expense = ''
+    amount = ''
   }
   const handleReset = () => {
     expense = ''
+    amount = ''
   }
 
   let expense = ''
+  let amount = ''
   const today = getCurrentDate()
 </script>
 
@@ -30,6 +33,7 @@
       <option value={category.id}>{category.name}</option>
     {/each}
   </Select>
+  <BindableInput label="Amount:" name="amount" bind:value={amount} />
   <button type="submit">Add</button>
   <button type="reset">Reset</button>
 </Form>
