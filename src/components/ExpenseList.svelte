@@ -9,6 +9,7 @@
   import { deleteExpense } from '../supabaseServices'
 
   let filteredList: Expense[]
+
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
   $: filteredList = $items
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -22,6 +23,7 @@
   const deleteItem = async (itemId: string) => {
     try {
       await deleteExpense(itemId)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
       $items = $items.filter(item => item.id != itemId)
     } catch (error) {
       console.log(error)
